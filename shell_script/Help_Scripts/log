@@ -1,0 +1,33 @@
+[root@dnaserver ~]# /opt/sdna/bin/tape_validate
+Usage: tape_validate -d <deviceid>-t <tape-serial-list> [-md5] [-skipltfs] [ -o log directory ]
+Invalid parameters specified Review your report in the "Tape Validate Folder" of your AdminDropBox.[root@dnaserver ~]# 
+[root@dnaserver ~]# /opt/sdna/bin/tape_validate -d st0 -t DNA506
+Checking setup parameters for verification process...
+Attempting to obtain lock on source device...
+Starting verification process...
+There are 1 tapes ready to process
+Attempting to load tape DNA506 into device st0.
+Checking tape filesystem.  This may take several minutes to complete.
+Mounting tape DNA506 filesystem in device st0.
+Verifying tape serial DNA506 filesystem is in device st0.
+Scanning catalog files to generate verify file list.
+Generating file list for archive akshat
+Processing catalog files.
+Verifying 1 files for "akshat" found in the catalog for DNA506.
+Unmounting the tape DNA506 in device st0
+ Review your report in the "Tape Validate Folder" of your AdminDropBox.[root@dnaserver ~]# /opt/sdna/bin/tape_validate -d st0 -t DNA506
+Checking setup parameters for verification process...
+Attempting to obtain lock on source device...
+Starting verification process...
+There are 1 tapes ready to process
+Attempting to load tape DNA506 into device st0.
+Checking tape filesystem.  This may take several minutes to complete.
+
+[root@dnaserver ~]# /opt/sdna/bin/tape_validate -d st0 -t DNA506,DNA507
+Checking setup parameters for verification process...
+Attempting to obtain lock on source device...
+Starting verification process...
+Unable to start verification: tape count mismatch. Review your report in the "Tape Validate Folder" of your AdminDropBox.[root@dnaserver ~]# 
+[root@dnaserver ~]# 
+[root@dnaserver ~]# 
+
