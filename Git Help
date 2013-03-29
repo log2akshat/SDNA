@@ -1,0 +1,134 @@
+Setting the default editor:
+git config --global core.editor vim 
+
+Color Highlighting:
+git config --global color.ui true
+git config --global color.status auto
+git config --global color.branch auto 
+
+Query existing global Git settings:
+git config --list
+
+Ignore certain files:
+# Ignore all bin directories
+bin
+# Ignore all files ending with ~
+*~
+# Ignore the target directory
+# Matches "target" in any subfolder
+target/ 
+
+========================
+Getting started with Git
+========================
+Create directory
+# switch to home
+cd ~/
+
+# create a directory and switch into it
+mkdir ~/repo01
+cd repo01
+# create a new directory
+mkdir datafiles 
+
+Initializing repository - for the current directory:
+git init
+
+See the current status of your repository:
+git status
+
+Add files to Git index:
+git add .
+
+Commit to Git repository:
+git commit -m "Initial commit"
+
+Looking at the result:
+git log
+
+Remove files:
+# Create a file and commit it
+touch nonsense2.txt
+git add . && git commit -m "more nonsense"
+--
+# remove the file via Git
+git rm nonsense2.txt
+--
+# commit the removal
+git commit -m "Removes nonsense2.txt file" 
+
+-------------------------------------------------------
+
+# Create a file and put it under version control
+touch nonsense.txt
+git add . && git commit -m "a new file has been created"
+--
+# Remove the file
+rm nonsense.txt
+--
+# Try standard way of committing -> will NOT work 
+git add . && git commit -m "a new file has been created" 
+Now remove it from the Git repository.
+--
+# commit the remove with the -a flag
+git commit -a -m "File nonsense.txt is now removed"
+
+Remove a file from the staging area:
+You can use the git reset [filename] command to remove a file from the index, which you added with git add [filename] .
+--
+# create a file and add to index
+touch unwantedstaged.txt
+git add unwantedstaged.txt
+--
+# remove it from the index
+git reset unwantedstaged.txt
+--
+# to cleanup, delete it
+rm unwantedstaged.txt
+
+-------------------------------------------------------------------
+Push changes to another repository:
+-----------------------------------
+# Make some changes in the first repository
+cd ~/repo01
+--
+# Make some changes in the file
+echo "Hello, hello. Turn your radio on" > test01
+echo "Bye, bye. Turn your radio off" > test02
+--
+# Commit the changes, -a will commit changes for modified files
+# but will not add automatically new files
+git commit -a -m "Some changes"
+--
+# Push the changes
+git push ../remote-repository.git
+
+--------------------------------------------------------------------
+Pull changes:
+-------------
+The git pull command allows you to get the latest changes from another repository. In your second repository, pull in the recent changes in the remote repository, make some changes, push them to your remote repository.
+
+# switch to second directory
+cd ~/repo02
+
+# pull in the latest changes of your remote repository
+git pull
+
+# make changes
+echo "A change" > test01
+
+# commit the changes
+git commit -a -m "A change"
+
+# push changes to remote repository
+# origin is automatically created as we cloned original from this repository
+git push origin 
+You can pull in the changes in your first repository.
+
+# switch to the first repository and pull in the changes
+cd ~/repo01
+
+git pull ../remote-repository.git/
+
+# check the changes
+git status 
